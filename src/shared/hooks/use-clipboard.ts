@@ -2,14 +2,10 @@ import {
   useClipboard as useVueUseClipboard,
 } from "@vueuse/core";
 import {
-  useToastHook,
-} from "./use-toast-hook";
+  toast,
+} from "vue-sonner";
 
 export function useClipboard() {
-  const {
-    successToast,
-    errorToast,
-  } = useToastHook();
   const {
     copy,
     copied,
@@ -19,19 +15,13 @@ export function useClipboard() {
   const copyToClipboard = async (value: string) => {
     await copy(value);
     if (!isSupported) {
-      errorToast({
-        detail: "Your browser does not support Clipboard API",
-      });
+      toast.error("Your browser does not support Clipboard API");
     }
     if (!copied) {
-      errorToast({
-        detail: "Failed to Copy",
-      });
+      toast.error("Failed to Copy");
     }
     if (copied) {
-      successToast({
-        detail: `Copied`,
-      });
+      toast.success("Copied");
     }
   };
 

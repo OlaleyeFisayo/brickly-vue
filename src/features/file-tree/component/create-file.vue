@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import type {
+  AppInputType,
+} from "@shared/types";
+import type {
   FileTreeNode,
 } from "@vast/file-explorer";
-import type {
-  FileTreeInputType,
-} from "../types";
+import AppInput from "@shared/components/app-input.vue";
 import {
   nextTick,
   onMounted,
@@ -23,7 +24,6 @@ import {
   dummyFileEntryNodeFile,
 } from "../variables";
 import FileEntryTemplate from "./file-entry-template.vue";
-import FileTreeInput from "./file-tree-input.vue";
 
 const props = defineProps<{
   node?: FileTreeNode;
@@ -32,7 +32,7 @@ const props = defineProps<{
 const fileTreeStore = useFileTreeStore();
 
 const newFileName = ref("");
-const createFileRef = ref<FileTreeInputType | null>(null);
+const createFileRef = ref<AppInputType | null>(null);
 const create = useCreate();
 
 onMounted(() => {
@@ -64,7 +64,7 @@ async function handleFileCreate() {
 
 <template>
   <FileEntryTemplate :node="dummyFileEntryNodeFile">
-    <FileTreeInput
+    <AppInput
       ref="createFileRef"
       v-model="newFileName"
       @blur="resetAndBlur"

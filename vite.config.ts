@@ -1,4 +1,7 @@
 import {
+  resolve,
+} from "node:path";
+import {
   PrimeVueResolver,
 } from "@primevue/auto-import-resolver";
 import tailwindcss from "@tailwindcss/vite";
@@ -6,17 +9,30 @@ import {
   vastFileExplorer,
 } from "@vast/file-explorer/vite";
 import vue from "@vitejs/plugin-vue";
+import RekaResolver from "reka-ui/resolver";
 import Components from "unplugin-vue-components/vite";
 import {
   defineConfig,
 } from "vite";
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@shared": resolve(
+        __dirname,
+        "src/shared",
+      ),
+    },
+  },
   plugins: [
     vue(),
     tailwindcss(),
     Components({
-      resolvers: [PrimeVueResolver()],
+      dts: true,
+      resolvers: [
+        PrimeVueResolver(),
+        RekaResolver(),
+      ],
     }),
     vastFileExplorer(),
   ],

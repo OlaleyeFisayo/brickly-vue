@@ -22,5 +22,4 @@ dist-ssr
 *.sw?
 
 # AI Tools
-.gemini
-*playwright*
+.claude

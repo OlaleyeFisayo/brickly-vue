@@ -2,6 +2,7 @@
 import type {
   HandleCreateModePayload,
 } from "../composables/handle-create-mode";
+import AppTooltip from "@shared/components/app-tooltip.vue";
 import {
   IconClipboard,
   IconFilePlus,
@@ -12,27 +13,26 @@ import {
   computed,
 } from "vue";
 import {
-  VAST_APP_STATES,
-} from "../../../shared/variables";
-import {
   copyCutFileEntry,
 } from "../composables/copy-cut-file-entry";
 import {
   handleCreateMode,
-
 } from "../composables/handle-create-mode";
 import {
   useCopy,
   useExpandDirectory,
-  useGetFileTree,
+  useFileTree,
   useMove,
+  useRootPathBasename,
 } from "../queries";
 import {
   useFileTreeStore,
 } from "../store";
 
+const rootPathBaseName = useRootPathBasename();
+const fileTree = useFileTree();
+
 const fileTreeStore = useFileTreeStore();
-const getFileTree = useGetFileTree();
 const copyAndCutMode = computed(() => fileTreeStore.copyAndCutData.mode);
 const copyAndCuteSource = computed(() => fileTreeStore.copyAndCutData.source);
 const copy = useCopy();
@@ -70,34 +70,41 @@ const fileTreeContainerActions = computed(() => [
   {
     title: "Refresh Files",
     icon: IconRefresh,
-    action: () => getFileTree.refetch(),
+    action: () => fileTree.refetch(),
   },
 ]);
 </script>
 
 <template>
-  <main class="space-y-2">
+  <section class="flex gap-2 justify-between items-center pl-4 pr-2 py-4 border-b border-border">
+    <h1 class="text-xl font-bold">
+      {{ rootPathBaseName.data }}
+    </h1>
     <section class="flex gap-1">
-      <button
+      <template
         v-for="{ title, icon, action, isVisible } in fileTreeContainerActions"
-        v-show="isVisible ?? true"
         :key="title"
-        v-tooltip="{
-          value: title,
-          showDelay: VAST_APP_STATES.tooltipShowDelay,
-        }"
-        class="cursor-pointer hover:bg-gray-800 p-1.5"
-        type="button"
-        @click="async () => action({
-          expandDirectory,
-          fileTreeStore,
-        })"
       >
-        <component
-          :is="icon"
-          class="size-5"
-        />
-      </button>
+        <AppTooltip
+          :content="title"
+          side="bottom"
+        >
+          <button
+            v-show="isVisible ?? true"
+            class="cursor-pointer hover:bg-vue-dark p-1.5"
+            type="button"
+            @click="async () => action({
+              expandDirectory,
+              fileTreeStore,
+            })"
+          >
+            <component
+              :is="icon"
+              class="size-5"
+            />
+          </button>
+        </AppTooltip>
+      </template>
     </section>
-  </main>
+  </section>
 </template>

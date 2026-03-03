@@ -16,14 +16,10 @@ defineProps<{
 </script>
 
 <template>
-  <template v-if="node.type === 'directory'">
-    <IconChevronDown
-      v-if="node.expanded"
-      :style="{ width: FILE_TREE_STATES.iconSize, height: FILE_TREE_STATES.iconSize }"
-    />
-    <IconChevronRight
-      v-else
-      :style="{ width: FILE_TREE_STATES.iconSize, height: FILE_TREE_STATES.iconSize }"
-    />
-  </template>
+  <component
+    :is="node.expanded ? IconChevronDown : IconChevronRight"
+    v-if="node.type === 'directory'"
+    :style="{ width: FILE_TREE_STATES.iconSize, height: FILE_TREE_STATES.iconSize }"
+    class="text-text-primary"
+  />
 </template>

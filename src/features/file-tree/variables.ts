@@ -27,3 +27,8 @@ export const dummyFileEntryNodeFolder: FileTreeNode = {
   expanded: false,
   children: [],
 };
+
+export const API_KEY = {
+  fileName: ["fileName"],
+  fileTree: ["fileTree"],
+};

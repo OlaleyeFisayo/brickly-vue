@@ -4,6 +4,9 @@ import {
   onMounted,
   onUnmounted,
 } from "vue";
+import {
+  Toaster,
+} from "vue-sonner";
 import ActivityBarBody from "./features/activity-bar/components/activity-bar-body.vue";
 import {
   useActivitybarStore,
@@ -14,7 +17,6 @@ import {
 import {
   useFileTreeStore,
 } from "./features/file-tree/store";
-import HeaderBody from "./features/header/components/header-body.vue";
 
 const activityBarStore = useActivitybarStore();
 const fileTreeStore = useFileTreeStore();
@@ -44,25 +46,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Toast />
-  <main class="w-full h-dvh flex flex-row">
+  <Toaster
+    rich-colors
+    theme="dark"
+  />
+  <main class="w-full h-dvh flex flex-row bg-surface-base">
     <ActivityBarBody />
-    <section class="w-full h-dvh">
-      <HeaderBody />
-      <section class="h-[calc(100dvh-55px)] overflow-hidden">
-        <Card
-          pt:root:class="max-w-[270px] rounded-none h-full"
-          pt:body:class="p-0 h-full"
-          pt:content:class="overflow-y-auto p-0 w-full overflow-x-hidden"
-        >
-          <template
-            v-if="cardView"
-            #content
-          >
-            <component :is="cardView" />
-          </template>
-        </Card>
-      </section>
+    <section class="h-dvh w-67.5 overflow-hidden bg-surface-raised border-r border-border">
+      <template
+        v-if="cardView"
+      >
+        <component :is="cardView" />
+      </template>
     </section>
   </main>
 </template>

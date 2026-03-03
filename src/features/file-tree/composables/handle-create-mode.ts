@@ -20,7 +20,6 @@ export async function handleCreateMode({
 }: HandleCreateModePayload) {
   const node = fileTreeStore.selectedNode;
   if (!node) {
-    fileTreeStore.enableCreateMode(type);
     return;
   }
 

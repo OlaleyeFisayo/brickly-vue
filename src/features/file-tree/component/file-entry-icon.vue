@@ -18,5 +18,6 @@ defineProps<{
   <IconFile
     v-if="node.type === 'file'"
     :style="{ width: FILE_TREE_STATES.iconSize, height: FILE_TREE_STATES.iconSize }"
+    class="text-text-primary"
   />
 </template>

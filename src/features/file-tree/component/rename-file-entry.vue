@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import type {
+  AppInputType,
+} from "@shared/types";
+import type {
   FileTreeNode,
 } from "@vast/file-explorer";
-import type {
-  FileTreeInputType,
-} from "../types";
+import AppInput from "@shared/components/app-input.vue";
 import {
   computed,
   nextTick,
@@ -18,7 +19,6 @@ import {
   useFileTreeStore,
 } from "../store";
 import FileEntryTemplate from "./file-entry-template.vue";
-import FileTreeInput from "./file-tree-input.vue";
 
 defineProps<{
   node: FileTreeNode;
@@ -28,7 +28,7 @@ const fileTreeStore = useFileTreeStore();
 const renameData = computed(() => fileTreeStore.renameData);
 
 const newName = ref(renameData.value?.name ?? "");
-const renameRef = ref<FileTreeInputType | null>();
+const renameRef = ref<AppInputType | null>();
 const rename = useRename();
 
 function resetAndBlur() {
@@ -56,7 +56,7 @@ onMounted(() => {
 
 <template>
   <FileEntryTemplate :node="node">
-    <FileTreeInput
+    <AppInput
       ref="renameRef"
       v-model="newName"
       @blur="resetAndBlur"

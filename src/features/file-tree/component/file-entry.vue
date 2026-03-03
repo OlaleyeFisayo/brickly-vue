@@ -120,14 +120,9 @@ function handleDragStart(node: FileTreeNode) {
   <FileEntryTemplate
     ref="dropZoneRef"
     :node="node"
-    :class="[
-      // Show focus state when the file or folder is selected
-      node.key === fileTreeStore.selectedNode?.key && !fileTreeStore.DragAndDropData.isDragging && 'bg-gray-800',
-      !fileTreeStore.DragAndDropData.isDragging && 'hover:bg-gray-800',
-    ]"
     :draggable="true"
     @dragstart="handleDragStart(node)"
-    @click="handleClick(node)"
+    @click.stop="handleClick(node)"
     @contextmenu.prevent="fileTreeStore.toggleFileContextMenu($event, node)"
   >
     <p

@@ -1,15 +1,14 @@
 import type {
-  AxiosError,
-} from "axios";
-import type {
   UseCopyCutPayload,
   UseCreatePayload,
   UseRenamePayload,
 } from "./types";
 import {
+  queryClient,
+} from "@shared/utils/query-client";
+import {
   useMutation,
   useQuery,
-  useQueryClient,
 } from "@tanstack/vue-query";
 import {
   collapseDirectory,
@@ -19,74 +18,54 @@ import {
   deleteItem,
   expandDirectory,
   getFileTree,
+  getRootPathBasename,
   move,
   openInFileManager,
   rename,
 } from "@vast/file-explorer";
 import {
-  useToastHook,
-} from "../../shared/hooks/use-toast-hook";
+  API_KEY,
+} from "./variables";
 
-export function useGetFileTree() {
+export function useRootPathBasename() {
   return useQuery({
-    queryKey: ["fileTree"],
+    queryKey: API_KEY.fileName,
+    queryFn: getRootPathBasename,
+    staleTime: Infinity,
+  });
+}
+
+export function useFileTree() {
+  return useQuery({
+    queryKey: API_KEY.fileTree,
     queryFn: getFileTree,
-    staleTime: 3600000,
+    staleTime: Infinity,
   });
 }
 
 export function useExpandDirectory() {
-  const queryClient = useQueryClient();
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: expandDirectory,
-    onSuccess: (data) => {
-      queryClient.setQueryData(
-        ["fileTree"],
-        data,
-      );
-    },
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: API_KEY.fileTree,
       });
     },
   });
 }
 
 export function useCollapseDirectory() {
-  const queryClient = useQueryClient();
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: collapseDirectory,
-    onSuccess: (data) => {
-      queryClient.setQueryData(
-        ["fileTree"],
-        data,
-      );
-    },
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: API_KEY.fileTree,
       });
     },
   });
 }
 
 export function useCopy() {
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: async ({
       sourcePath,
@@ -97,21 +76,10 @@ export function useCopy() {
         newPath,
       );
     },
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
-      });
-    },
   });
 }
 
 export function useMove() {
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: async ({
       sourcePath,
@@ -122,38 +90,16 @@ export function useMove() {
         newPath,
       );
     },
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
-      });
-    },
   });
 }
 
 export function useDelete() {
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: deleteItem,
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
-      });
-    },
   });
 }
 
 export function useCreate() {
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: async ({
       type,
@@ -173,21 +119,10 @@ export function useCreate() {
         );
       }
     },
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
-      });
-    },
   });
 }
 
 export function useRename() {
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: async ({
       path,
@@ -198,30 +133,11 @@ export function useRename() {
         name,
       );
     },
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
-      });
-    },
   });
 }
 
 export function useOpenInFileManager() {
-  const {
-    errorToast,
-  } = useToastHook();
   return useMutation({
     mutationFn: openInFileManager,
-    onError: (error: AxiosError<{
-      message: string;
-    }>) => {
-      const errorMessage = error?.response?.data ? error.response.data.message : error.message;
-      errorToast({
-        detail: errorMessage,
-      });
-    },
   });
 }

@@ -5,7 +5,7 @@ import type {
   Component,
 } from "vue";
 
-export type ActivityBarItemsTitle = "Files";
+export type ActivityBarItemsTitle = "Files" | "Components";
 
 export type ActivityBarItems = {
   title: ActivityBarItemsTitle;
