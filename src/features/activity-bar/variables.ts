@@ -1,11 +1,11 @@
 import type {
   ActivityBarItems,
-} from "../types";
+} from "./types";
 import {
   IconComponents,
   IconFile,
 } from "@tabler/icons-vue";
-import FileTreeContainer from "../../file-tree/component/file-tree-container.vue";
+import FileTreeContainer from "../file-tree/component/file-tree-container.vue";
 
 export const ActivityBarList: ActivityBarItems[] = [
   {

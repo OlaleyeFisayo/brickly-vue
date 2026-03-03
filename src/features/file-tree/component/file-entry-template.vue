@@ -36,7 +36,7 @@ defineExpose({
     class="cursor-pointer flex py-0.5 px-1 items-center gap-1 text-text-primary"
     :class="[
       // Show focus state when the file or folder is selected
-      node.key === fileTreeStore.selectedNode?.key && highlightConditions && 'bg-vue-base ring-vue-accent ring-1',
+      node.key === fileTreeStore.selectedNode?.key && highlightConditions && 'bg-vue-base! ring-vue-accent ring-1',
       highlightConditions && 'hover:bg-vue-dark',
     ]"
   >

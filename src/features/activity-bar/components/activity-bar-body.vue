@@ -6,7 +6,7 @@ import {
 } from "../store";
 import {
   ActivityBarList,
-} from "../utils/activity-bar-list";
+} from "../variables";
 
 const activityBarStore = useActivitybarStore();
 </script>

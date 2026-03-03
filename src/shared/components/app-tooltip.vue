@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import {
-  VAST_APP_STATES,
-} from "../variables";
-
 withDefaults(
   defineProps<{
     content: string;
@@ -18,7 +14,7 @@ withDefaults(
 
 <template>
   <TooltipProvider>
-    <TooltipRoot :delay-duration="VAST_APP_STATES.tooltipShowDelay">
+    <TooltipRoot :delay-duration="1000">
       <TooltipTrigger
         as-child
       >

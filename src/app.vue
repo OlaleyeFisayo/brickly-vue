@@ -13,7 +13,7 @@ import {
 } from "./features/activity-bar/store";
 import {
   ActivityBarList,
-} from "./features/activity-bar/utils/activity-bar-list";
+} from "./features/activity-bar/variables";
 import {
   useFileTreeStore,
 } from "./features/file-tree/store";
