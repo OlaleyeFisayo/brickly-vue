@@ -51,9 +51,9 @@ onUnmounted(() => {
     rich-colors
     theme="dark"
   />
-  <main class="w-full h-dvh flex flex-row bg-surface-base">
+  <main class="w-full h-dvh flex flex-row bg-primary-400">
     <ActivityBarBody />
-    <section class="h-dvh w-67.5! shrink-0 overflow-hidden bg-surface-raised border-r border-border">
+    <section class="h-dvh w-67.5! shrink-0 overflow-hidden bg-primary-500 border-r border-primary-700">
       <template
         v-if="cardView"
       >

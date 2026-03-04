@@ -41,7 +41,7 @@ const gridStyle = computed(() => {
   const ox = offset.x % size;
   const oy = offset.y % size;
   return {
-    backgroundImage: `radial-gradient(circle, #3a3a3a ${dotSize}px, transparent ${dotSize}px)`,
+    backgroundImage: `radial-gradient(circle, var(--primary-700) ${dotSize}px, transparent ${dotSize}px)`,
     backgroundSize: `${size}px ${size}px`,
     backgroundPosition: `${ox}px ${oy}px`,
   };
@@ -51,7 +51,7 @@ const gridStyle = computed(() => {
 <template>
   <div
     ref="canvasEl"
-    class="relative overflow-hidden bg-surface-base select-none"
+    class="relative overflow-hidden bg-primary-400 select-none"
     :class="cursorClass"
     :style="gridStyle"
     @mousedown="onMousedown"
@@ -66,9 +66,9 @@ const gridStyle = computed(() => {
     />
 
     <!-- Zoom indicator -->
-    <div class="absolute bottom-4 right-4 flex items-center gap-1 bg-surface-raised border border-border rounded text-xs text-text-muted">
+    <div class="absolute bottom-4 right-4 flex items-center gap-1 bg-primary-500 border border-primary-700 rounded text-xs text-primary-900">
       <button
-        class="px-2 py-1 hover:text-text-primary disabled:opacity-30"
+        class="px-2 py-1 hover:text-primary-800 disabled:opacity-30"
         :disabled="scale <= 0.1"
         type="button"
         @click="zoomOut"
@@ -77,7 +77,7 @@ const gridStyle = computed(() => {
       </button>
       <span class="min-w-10 text-center">{{ zoomPercent() }}</span>
       <button
-        class="px-2 py-1 hover:text-text-primary disabled:opacity-30"
+        class="px-2 py-1 hover:text-primary-800 disabled:opacity-30"
         :disabled="scale >= 10"
         type="button"
         @click="zoomIn"

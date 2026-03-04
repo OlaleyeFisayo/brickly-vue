@@ -24,7 +24,7 @@ withDefaults(
         <TooltipContent
           :align="align"
           :side="side"
-          class="bg-surface-overlay p-2 border border-border rounded-md text-text-primary"
+          class="bg-primary-600 p-2 border border-primary-700 rounded-md text-primary-800"
         >
           {{ content }}
         </TooltipContent>

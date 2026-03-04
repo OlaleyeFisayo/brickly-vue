@@ -1,37 +1,66 @@
 @import "tailwindcss";
 @import "vue-sonner/style.css";
 
-@theme {
+:root {
   /* -------------------------------------------------- */
   /* PRIMARY — Vue green. Use for primary actions,       */
   /* active states, selected items, and brand moments.  */
   /* -------------------------------------------------- */
-  --color-vue-base: #42b883; /* Primary buttons, active tab indicators, toggles on  */
-  --color-vue-dark: #2d8a63; /* Hover/pressed state of primary buttons               */
-  --color-vue-subtle: #d4f0e5; /* Badges, highlights, success backgrounds              */
+  --primary-100: #42b883; /* Primary buttons, active tab indicators, toggles on  */
+  --primary-200: #2d8a63; /* Hover/pressed state of primary buttons */
+  --primary-300: #d4f0e5;
+  --color-primary-300: #d4f0e5; /* Badges, highlights, success backgrounds */
 
   /* -------------------------------------------------- */
   /* SURFACE — Dark layered backgrounds.                 */
   /* Use in order of depth: base → raised → overlay.    */
   /* -------------------------------------------------- */
-  --color-surface-base: #1a1a1a; /* Root app background, editor backdrop            */
-  --color-surface-raised: #242424; /* Sidebars, panels, cards sitting above the base  */
-  --color-surface-overlay: #2e2e2e; /* Dropdowns, modals, tooltips, context menus      */
+  --primary-400: #1a1a1a; /* Root app background, editor backdrop */
+  --primary-500: #242424; /* Sidebars, panels, cards sitting above the base  */
+  --primary-600: #2e2e2e; /* Dropdowns, modals, tooltips, context menus */
 
   /* -------------------------------------------------- */
   /* BORDER — Use for all edges, dividers, and outlines. */
   /* -------------------------------------------------- */
-  --color-border: #3a3a3a; /* Input borders, panel dividers, separator lines */
+  --primary-700: #3a3a3a; /* Input borders, panel dividers, separator lines */
 
   /* -------------------------------------------------- */
   /* TEXT — Typography hierarchy.                        */
   /* -------------------------------------------------- */
-  --color-text-primary: #e8e8f0; /* All main readable text                          */
-  --color-text-muted: #8896a0; /* Secondary labels, placeholders, icon-only labels */
+  --primary-800: #e8e8f0; /* All main readable text */
+  --primary-900: #8896a0; /* Secondary labels, placeholders, icon-only labels */
 
   /* -------------------------------------------------- */
   /* ACCENT — Vue dark blue-grey (from Vue's logo).      */
   /* Use for links, focus rings, and info states.        */
   /* -------------------------------------------------- */
-  --color-vue-accent: #35495e; /* Links, focus rings, info badges, keyboard shortcuts */
+  --primary-1000: #35495e; /* Links, focus rings, info badges, keyboard shortcuts */
+}
+
+@theme {
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary-1000: var(--primary-1000);
+}
+
+::-webkit-scrollbar {
+  background: inherit;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-700);
+  width: 5px;
+  border-radius: 50px;
 }

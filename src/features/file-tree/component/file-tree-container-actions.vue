@@ -78,7 +78,7 @@ const fileTreeContainerActions = computed(() => [
 </script>
 
 <template>
-  <section class="flex gap-2 text-text-primary justify-between items-center pl-4 pr-2 py-4 border-b border-border">
+  <section class="flex gap-2 text-primary-800 justify-between items-center pl-4 pr-2 py-4 border-b border-primary-700">
     <h1 class="text-xl font-bold">
       {{ rootInfo?.basename }}
     </h1>
@@ -93,7 +93,7 @@ const fileTreeContainerActions = computed(() => [
         >
           <button
             v-show="isVisible ?? true"
-            class="cursor-pointer hover:bg-vue-dark p-1.5"
+            class="cursor-pointer hover:bg-primary-200 p-1.5"
             type="button"
             @click="async () => action({
               expandDirectory,

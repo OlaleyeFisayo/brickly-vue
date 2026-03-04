@@ -1,3 +1,3 @@
 <template>
-  <Separator class="bg-border w-full h-0.5" />
+  <Separator class="bg-primary-700 w-full h-0.5" />
 </template>

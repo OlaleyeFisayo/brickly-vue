@@ -11,7 +11,7 @@ defineEmits<ContextMenuItemEmits>();
 <template>
   <ContextMenuItem
     v-bind="$props"
-    class="px-2 py-1 cursor-pointer hover:bg-vue-dark rounded-sm text-text-primary outline-none!"
+    class="px-2 py-1 cursor-pointer hover:bg-primary-200 rounded-sm text-primary-800 outline-none!"
   >
     <slot />
   </ContextMenuItem>

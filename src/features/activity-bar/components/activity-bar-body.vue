@@ -13,7 +13,7 @@ const activityBarStore = useActivitybarStore();
 
 <template>
   <section
-    class="w-13.75! rounded-none h-full space-y-4 bg-surface-raised py-4 border-r border-border"
+    class="w-13.75! rounded-none h-full space-y-4 bg-primary-500 py-4 border-r border-primary-700"
   >
     <img
       src="../../../shared/assets/logo.png"
@@ -29,7 +29,7 @@ const activityBarStore = useActivitybarStore();
         align="center"
       >
         <button
-          :class="`cursor-pointer w-full flex items-center justify-center ${activityBarStore.activityInView === title ? 'text-text-primary' : 'text-text-muted'} hover:text-text-primary`"
+          :class="`cursor-pointer w-full flex items-center justify-center ${activityBarStore.activityInView === title ? 'text-primary-800' : 'text-primary-900'} hover:text-primary-800`"
           type="button"
           @click="activityBarStore.changeActivityInView(title)"
         >

@@ -33,11 +33,11 @@ defineExpose({
   <div
     ref="rootEl"
     v-bind="$attrs"
-    class="cursor-pointer flex py-0.5 px-1 items-center gap-1 text-text-primary"
+    class="cursor-pointer flex py-0.5 px-1 items-center gap-1 text-primary-800"
     :class="[
       // Show focus state when the file or folder is selected
-      node.key === fileTreeStore.selectedNode?.key && highlightConditions && 'bg-vue-base! ring-vue-accent ring-1',
-      highlightConditions && 'hover:bg-vue-dark',
+      node.key === fileTreeStore.selectedNode?.key && highlightConditions && 'bg-primary-100! ring-primary-1000 ring-1',
+      highlightConditions && 'hover:bg-primary-200',
     ]"
   >
     <FolderToggleIcon :node="node" />

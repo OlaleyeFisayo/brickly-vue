@@ -60,7 +60,7 @@ function isNodeInDropZone(node: FileTreeNode) {
       :key="node.key"
       :style="style"
       :class="{
-        'bg-vue-dark': fileTreeStore.DragAndDropData.isDragging && isNodeInDropZone(node),
+        'bg-primary-200': fileTreeStore.DragAndDropData.isDragging && isNodeInDropZone(node),
       }"
     >
       <!-- Rename File Entry Mode -->
