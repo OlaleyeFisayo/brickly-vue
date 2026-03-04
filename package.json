@@ -1,16 +1,16 @@
 {
-  "name": "@vast/vue",
+  "name": "@brickly/vue",
   "type": "module",
   "version": "0.0.0",
   "private": true,
   "author": "Festus-Olaleye Oluwafisayomi Oluwaseunfunmi",
-  "homepage": "https://github.com/OlaleyeFisayo/vast-vue#readme",
+  "homepage": "https://github.com/OlaleyeFisayo/brickly-vue#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OlaleyeFisayo/vast-vue.git"
+    "url": "https://github.com/OlaleyeFisayo/brickly-vue.git"
   },
   "bugs": {
-    "url": "https://github.com/OlaleyeFisayo/vast-vue/issues"
+    "url": "https://github.com/OlaleyeFisayo/brickly-vue/issues"
   },
   "files": [
     "dist"
@@ -22,12 +22,11 @@
     "preview": "vite preview",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "prepare": "husky",
-    "file:remove": "npm remove @vast/file-explorer",
-    "file": "npm run file:remove && npm install vast-file-explorer-0.0.0.tgz -D"
+    "prepare": "husky"
   },
   "dependencies": {
-    "@tabler/icons-vue": "^3.36.1",
+    "@brickly/file-explorer": "^1.0.0",
+    "@tabler/icons-vue": "^3.38.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/vue-query": "^5.92.8",
     "@vueuse/core": "^14.2.0",
@@ -41,7 +40,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "^7.0.1",
     "@types/node": "^24.10.1",
-    "@vast/file-explorer": "file:vast-file-explorer-0.0.0.tgz",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/tsconfig": "^0.8.1",
     "eslint": "^9.39.2",

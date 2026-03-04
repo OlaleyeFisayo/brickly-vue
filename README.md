@@ -1,4 +1,4 @@
-# vast-vue
+# bricky-vue
 
 This is an npm package designed to allow users to easily create web applications using drag-and-drop components.
 

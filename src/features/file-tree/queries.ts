@@ -4,13 +4,6 @@ import type {
   UseRenamePayload,
 } from "./types";
 import {
-  queryClient,
-} from "@shared/utils/query-client";
-import {
-  useMutation,
-  useQuery,
-} from "@tanstack/vue-query";
-import {
   collapseDirectory,
   copy,
   createFile,
@@ -22,7 +15,14 @@ import {
   move,
   openInFileManager,
   rename,
-} from "@vast/file-explorer";
+} from "@brickly/file-explorer";
+import {
+  queryClient,
+} from "@shared/utils/query-client";
+import {
+  useMutation,
+  useQuery,
+} from "@tanstack/vue-query";
 import {
   useFileTreeStore,
 } from "./store";

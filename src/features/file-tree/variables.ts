@@ -1,6 +1,6 @@
 import type {
   FileTreeNode,
-} from "@vast/file-explorer";
+} from "@brickly/file-explorer";
 
 export const FILE_TREE_STATES = {
   fileGap: "1rem !important",

@@ -1,6 +1,6 @@
 import type {
   FileTreeNode,
-} from "@vast/file-explorer";
+} from "@brickly/file-explorer";
 import type {
   ActiveCopyCutMode,
   CopyAndCutModeState,

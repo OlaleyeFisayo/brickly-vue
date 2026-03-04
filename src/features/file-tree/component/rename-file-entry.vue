@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import type {
+  FileTreeNode,
+} from "@brickly/file-explorer";
+import type {
   AppInputType,
 } from "@shared/types";
-import type {
-  FileTreeNode,
-} from "@vast/file-explorer";
 import AppInput from "@shared/components/app-input.vue";
 import {
   computed,

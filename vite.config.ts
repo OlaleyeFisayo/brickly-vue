@@ -1,10 +1,10 @@
 import {
   resolve,
 } from "node:path";
-import tailwindcss from "@tailwindcss/vite";
 import {
-  vastFileExplorer,
-} from "@vast/file-explorer/vite";
+  fileExplorer,
+} from "@brickly/file-explorer/vite";
+import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
 import RekaResolver from "reka-ui/resolver";
 import Components from "unplugin-vue-components/vite";
@@ -34,6 +34,6 @@ export default defineConfig({
         RekaResolver(),
       ],
     }),
-    vastFileExplorer(),
+    fileExplorer(),
   ],
 });

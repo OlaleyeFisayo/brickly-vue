@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type {
   FileTreeNode,
-} from "@vast/file-explorer";
+} from "@brickly/file-explorer";
 import {
   computed,
   ref,

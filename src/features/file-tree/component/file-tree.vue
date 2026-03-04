@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import {
+  onFileTreeUpdate,
+} from "@brickly/file-explorer";
+import {
   queryClient,
 } from "@shared/utils/query-client";
-import {
-  onFileTreeUpdate,
-} from "@vast/file-explorer";
 import {
   onMounted,
 } from "vue";
