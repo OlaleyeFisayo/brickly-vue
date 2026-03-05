@@ -14,6 +14,7 @@ export const dummyFileEntryNodeFile: FileTreeNode = {
   absolutePath: "",
   parentPath: "",
   path: "",
+  extension: "",
 };
 
 export const dummyFileEntryNodeFolder: FileTreeNode = {
@@ -31,4 +32,5 @@ export const dummyFileEntryNodeFolder: FileTreeNode = {
 export const API_KEY = {
   fileName: ["fileName"],
   fileTree: ["fileTree"],
+  fileContent: (path: string) => ["fileContent", path],
 };

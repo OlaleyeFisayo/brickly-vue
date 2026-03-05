@@ -22,10 +22,12 @@
     "preview": "vite preview",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "file:remove": "nun @brickly/file-explore",
+    "file": "nr file:remove && ni ./brickly-file-explorer-1.0.1.tgz"
   },
   "dependencies": {
-    "@brickly/file-explorer": "^1.0.0",
+    "@brickly/file-explorer": "file:brickly-file-explorer-1.0.1.tgz",
     "@tabler/icons-vue": "^3.38.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/vue-query": "^5.92.8",

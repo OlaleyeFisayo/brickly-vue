@@ -17,6 +17,7 @@ import {
 import {
   useCollapseDirectory,
   useExpandDirectory,
+  useGetFileContent,
   useMove,
 } from "../queries";
 import {
@@ -56,6 +57,15 @@ function toggleIcon(node: FileTreeNode) {
 async function handleClick(node: FileTreeNode) {
   const newNode = toggleIcon(node);
   fileTreeStore.setSelectedNode(newNode);
+}
+
+// Get File Content
+const selectedFilePath = ref<string | null>(null);
+useGetFileContent(selectedFilePath);
+async function handleDoubleClick(node: FileTreeNode) {
+  if (node.type === "file") {
+    selectedFilePath.value = node.absolutePath;
+  }
 }
 // drag and drop of file-entry
 const dropZoneRef = ref<HTMLButtonElement | null>(null);
@@ -125,6 +135,7 @@ function handleDragStart(node: FileTreeNode) {
       :draggable="true"
       @dragstart="handleDragStart(node)"
       @click.stop="handleClick(node)"
+      @dblclick.stop="handleDoubleClick(node)"
     >
       <p
         class="text-left text-nowrap text-ellipsis overflow-hidden"
