@@ -3,6 +3,9 @@ import type {
   FileTreeNode,
 } from "@brickly/file-explorer";
 import {
+  useSearchParams,
+} from "@shared/hooks/use-search-params";
+import {
   useDropZone,
 } from "@vueuse/core";
 import {
@@ -17,7 +20,6 @@ import {
 import {
   useCollapseDirectory,
   useExpandDirectory,
-  useGetFileContent,
   useMove,
 } from "../queries";
 import {
@@ -30,6 +32,7 @@ const props = defineProps<{
   node: FileTreeNode;
 }>();
 
+const params = useSearchParams();
 const fileTreeStore = useFileTreeStore();
 const expandDirectory = useExpandDirectory();
 const collapseDirectory = useCollapseDirectory();
@@ -54,17 +57,11 @@ function toggleIcon(node: FileTreeNode) {
   return newNode;
 };
 
-async function handleClick(node: FileTreeNode) {
+function handleClick(node: FileTreeNode) {
   const newNode = toggleIcon(node);
   fileTreeStore.setSelectedNode(newNode);
-}
-
-// Get File Content
-const selectedFilePath = ref<string | null>(null);
-useGetFileContent(selectedFilePath);
-async function handleDoubleClick(node: FileTreeNode) {
   if (node.type === "file") {
-    selectedFilePath.value = node.absolutePath;
+    params.file = node.absolutePath;
   }
 }
 // drag and drop of file-entry
@@ -135,7 +132,6 @@ function handleDragStart(node: FileTreeNode) {
       :draggable="true"
       @dragstart="handleDragStart(node)"
       @click.stop="handleClick(node)"
-      @dblclick.stop="handleDoubleClick(node)"
     >
       <p
         class="text-left text-nowrap text-ellipsis overflow-hidden"

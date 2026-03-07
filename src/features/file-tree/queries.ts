@@ -1,7 +1,4 @@
 import type {
-  Ref,
-} from "vue";
-import type {
   UseCopyCutPayload,
   UseCreatePayload,
   UseRenamePayload,
@@ -13,7 +10,6 @@ import {
   createFolder,
   deleteItem,
   expandDirectory,
-  getFileContent,
   getFileTree,
   getRootInfo,
   move,
@@ -27,10 +23,6 @@ import {
   useMutation,
   useQuery,
 } from "@tanstack/vue-query";
-import {
-  computed,
-
-} from "vue";
 import {
   useFileTreeStore,
 } from "./store";
@@ -155,14 +147,5 @@ export function useRename() {
 export function useOpenInFileManager() {
   return useMutation({
     mutationFn: openInFileManager,
-  });
-}
-
-export function useGetFileContent(path: Ref<string | null>) {
-  return useQuery({
-    queryKey: computed(() => API_KEY.fileContent(path.value ?? "")),
-    queryFn: () => getFileContent(path.value!),
-    enabled: computed(() => !!path.value),
-    staleTime: Infinity,
   });
 }

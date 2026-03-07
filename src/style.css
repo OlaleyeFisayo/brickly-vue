@@ -8,8 +8,7 @@
   /* -------------------------------------------------- */
   --primary-100: #42b883; /* Primary buttons, active tab indicators, toggles on  */
   --primary-200: #2d8a63; /* Hover/pressed state of primary buttons */
-  --primary-300: #d4f0e5;
-  --color-primary-300: #d4f0e5; /* Badges, highlights, success backgrounds */
+  --primary-300: #d4f0e5; /* Badges, highlights, success backgrounds */
 
   /* -------------------------------------------------- */
   /* SURFACE — Dark layered backgrounds.                 */
