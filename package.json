@@ -23,11 +23,11 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepare": "husky",
-    "file:remove": "nun @brickly/file-explore",
-    "file": "nr file:remove && ni ./brickly-file-explorer-1.0.1.tgz"
+    "file:remove": "nun @brickly/file-explorer",
+    "file": "nr file:remove && ni ./brickly-file-explorer-1.1.0.tgz"
   },
   "dependencies": {
-    "@brickly/file-explorer": "file:brickly-file-explorer-1.0.1.tgz",
+    "@brickly/file-explorer": "^1.1.0",
     "@tabler/icons-vue": "^3.38.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/vue-query": "^5.92.8",

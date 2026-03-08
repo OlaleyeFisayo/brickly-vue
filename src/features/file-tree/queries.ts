@@ -14,6 +14,7 @@ import {
   getRootInfo,
   move,
   openInFileManager,
+  openInIde,
   rename,
 } from "@brickly/file-explorer";
 import {
@@ -147,5 +148,11 @@ export function useRename() {
 export function useOpenInFileManager() {
   return useMutation({
     mutationFn: openInFileManager,
+  });
+}
+
+export function useOpenInIde() {
+  return useMutation({
+    mutationFn: openInIde,
   });
 }

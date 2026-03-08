@@ -34,6 +34,8 @@ export default defineConfig({
         RekaResolver(),
       ],
     }),
-    fileExplorer(),
+    fileExplorer({
+      defaultIde: "vscode",
+    }),
   ],
 });

@@ -25,6 +25,7 @@ import {
   useExpandDirectory,
   useMove,
   useOpenInFileManager,
+  useOpenInIde,
 } from "../queries";
 import {
   useFileTreeStore,
@@ -44,6 +45,7 @@ const copy = useCopy();
 const move = useMove();
 const deleteFn = useDelete();
 const openInFileManager = useOpenInFileManager();
+const openInIde = useOpenInIde();
 
 const isDirectory = props.node.type === "directory";
 const absolutePath = props.node.absolutePath;
@@ -79,7 +81,7 @@ const relativePath = props.node.key;
         </AppContextMenuItem>
         <AppContextMenuItem
           v-if="!isDirectory"
-          @click="openInFileManager.mutateAsync(absolutePath)"
+          @click="openInIde.mutateAsync(relativePath)"
         >
           Reveal in IDE
         </AppContextMenuItem>
