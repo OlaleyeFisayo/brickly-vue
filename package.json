@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@brickly/file-explorer": "^1.1.0",
+    "@brickly/parser": "file:brickly-parser-1.0.0.tgz",
     "@tabler/icons-vue": "^3.38.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/vue-query": "^5.92.8",

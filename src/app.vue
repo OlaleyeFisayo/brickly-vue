@@ -10,6 +10,7 @@ import Canvas from "@features/canvas/components/canvas.vue";
 import {
   useFileTreeStore,
 } from "@features/file-tree/store";
+import VueContentContainer from "@features/vue-content-tree/components/vue-content-container.vue";
 import AppSplitterGroup from "@shared/components/app-splitter/app-splitter-group.vue";
 import AppSplitterPanel from "@shared/components/app-splitter/app-splitter-panel.vue";
 import AppSplitterResizeHandle from "@shared/components/app-splitter/app-splitter-resize-handle.vue";
@@ -81,7 +82,10 @@ onUnmounted(() => {
         as-child
         :min-size="65"
       >
-        <Canvas />
+        <div class="w-full flex">
+          <VueContentContainer />
+          <Canvas class="flex-1" />
+        </div>
       </AppSplitterPanel>
     </AppSplitterGroup>
     <!-- <section class="h-dvh w-67.5! shrink-0 overflow-hidden bg-primary-500 border-r border-primary-700">
@@ -91,6 +95,7 @@ onUnmounted(() => {
         <component :is="cardView" />
       </template>
     </section>
+    <VueContentContainer />
     <Canvas class="flex-1" /> -->
   </main>
 </template>
