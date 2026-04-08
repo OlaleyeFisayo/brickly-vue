@@ -63,7 +63,7 @@ const {
             <button
               :class="
                 cn(
-                  'cursor-pointer px-4 py-2 block transition-colors hover:bg-primary-400 w-full',
+                  'cursor-pointer px-3 py-2 block transition-colors hover:bg-primary-400 w-full',
                   activePanel === id && 'border-primary-200 border-l-3 bg-primary-400 text-primary-200',
                 )
               "
