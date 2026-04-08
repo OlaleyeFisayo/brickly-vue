@@ -3,7 +3,8 @@ import {
 } from "@vueuse/core";
 
 const params = useUrlSearchParams<{
-  vueFile: string;
+  vueFile?: string;
+  panel?: string;
 }>("history");
 
 export function useSearchParams() {

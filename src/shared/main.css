@@ -40,6 +40,7 @@
   --primary-100: #f6f6fc;
   --primary-200: #83aeff;
   --primary-300: #aaabb0;
+  --primary-400: #1d2025;
 
   --radius: 0.625rem;
   --foreground: var(--white);
@@ -78,8 +79,9 @@
   --color-white: var(--white);
   --color-background-100: var(--background-100);
   --color-primary-100: var(--primary-100);
-  --color-primary-200: var(--primary-100);
+  --color-primary-200: var(--primary-200);
   --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
 
   --font-manrope: "Manrope", sans-serif;
   --font-inter: "Inter", sans-serif;
