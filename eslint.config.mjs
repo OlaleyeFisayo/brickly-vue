@@ -13,6 +13,7 @@ export default antfu(
     },
   },
   {
+    files: ["**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue}"],
     rules: {
       "ts/no-redeclare": "off",
       "ts/consistent-type-definitions": ["error", "type"],
@@ -37,6 +38,25 @@ export default antfu(
         case: "kebabCase",
         ignore: ["README.md"],
       }],
+      "vue/max-attributes-per-line": ["error", {
+        singleline: {
+          max: 1,
+        },
+        multiline: {
+          max: 1,
+        },
+      }],
+    },
+  },
+  {
+    files: ["src/shared/components/ui/**/*"],
+    rules: {
+      "unicorn/filename-case": "off",
+    },
+  },
+  {
+    files: ["**/*.vue"],
+    rules: {
       "vue/max-attributes-per-line": ["error", {
         singleline: {
           max: 1,

@@ -10,8 +10,8 @@ import {
 import app from "./app.vue";
 import {
   queryClient,
-} from "./shared/utils/query-client";
-import "./style.css";
+} from "./shared/lib/query-client";
+import "./shared/main.css";
 
 const pinia = createPinia();
 const vueApp = createApp(app);

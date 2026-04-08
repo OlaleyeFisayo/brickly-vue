@@ -6,8 +6,6 @@ import {
 } from "@brickly/file-explorer/vite";
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
-import RekaResolver from "reka-ui/resolver";
-import Components from "unplugin-vue-components/vite";
 import {
   defineConfig,
 } from "vite";
@@ -15,6 +13,10 @@ import {
 export default defineConfig({
   resolve: {
     alias: {
+      "@": resolve(
+        __dirname,
+        "./src",
+      ),
       "@shared": resolve(
         __dirname,
         "src/shared",
@@ -28,12 +30,6 @@ export default defineConfig({
   plugins: [
     vue(),
     tailwindcss(),
-    Components({
-      dts: true,
-      resolvers: [
-        RekaResolver(),
-      ],
-    }),
     fileExplorer({
       hiddenFiles: [".husky", ".git", ".vscode"],
       defaultIde: "vscode",
