@@ -6,6 +6,9 @@ import {
   useCollapseDirectory,
   useExpandDirectory,
 } from "../api";
+import {
+  useFileExplorerStore,
+} from "../store";
 import FileTreeNodeTemplate from "./file-tree-node-template.vue";
 
 withDefaults(
@@ -23,15 +26,40 @@ const {
 const {
   mutateAsync: expandDirectory,
 } = useExpandDirectory();
+const fileExplorerStore = useFileExplorerStore();
 
-async function handleNodeClick(node: FileTreeNode) {
+function setSelectedNode(
+  node: FileTreeNode,
+  event: MouseEvent,
+) {
+  const nodeSnapshot = {
+    ...node,
+  };
+  const isDirectory = nodeSnapshot.type === "directory";
+  if (isDirectory) {
+    nodeSnapshot.expanded = !nodeSnapshot.expanded;
+  }
+  const isMultiSelect = event.ctrlKey || event.metaKey;
+  if (isMultiSelect) {
+    fileExplorerStore.toggleSelectedNode(nodeSnapshot);
+  }
+  else {
+    fileExplorerStore.setSelectedNode(nodeSnapshot);
+  }
+}
+
+async function handleNodeClick(
+  node: FileTreeNode,
+  event: MouseEvent,
+) {
   const isDirectory = node.type === "directory";
-  if (isDirectory && !node.expanded) {
-    await expandDirectory(node.absolutePath);
+  if (isDirectory) {
+    node.expanded ? await collapseDirectory(node.absolutePath) : await expandDirectory(node.absolutePath);
   }
-  else if (isDirectory && node.expanded) {
-    await collapseDirectory(node.absolutePath);
-  }
+  setSelectedNode(
+    node,
+    event,
+  );
 }
 </script>
 
@@ -43,7 +71,7 @@ async function handleNodeClick(node: FileTreeNode) {
     >
       <FileTreeNodeTemplate
         :node="node"
-        @click="handleNodeClick(node)"
+        @click="handleNodeClick(node, $event)"
       >
         <p class="truncate text-ellipsis text-sm">
           {{ node.name }}

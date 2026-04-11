@@ -4,6 +4,7 @@ import {
 import {
   createPinia,
 } from "pinia";
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import {
   createApp,
 } from "vue";
@@ -13,7 +14,7 @@ import {
 } from "./shared/lib/query-client";
 import "./shared/main.css";
 
-const pinia = createPinia();
+const pinia = createPinia().use(piniaPluginPersistedstate);
 const vueApp = createApp(app);
 
 vueApp.use(pinia);
