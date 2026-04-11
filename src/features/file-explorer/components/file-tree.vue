@@ -1,25 +1,49 @@
 <script lang="ts" setup>
 import {
+  onFileTreeUpdate,
+} from "@brickly/file-explorer";
+import {
   useQuery,
 } from "@tanstack/vue-query";
 import {
+  onMounted,
+} from "vue";
+import {
+  ScrollArea,
+} from "@/shared/components/ui/scroll-area";
+import {
+  fileTreeNodesQueryOptions,
   rootInfoQueryOptions,
 } from "../api";
 import FileTreeActions from "./file-tree-actions.vue";
+import FileTreeNodes from "./file-tree-nodes.vue";
 
 const {
   data: rootInfo,
 } = useQuery(rootInfoQueryOptions());
+
+const {
+  data: fileTreeNodes,
+  refetch: getFileTreeNodes,
+} = useQuery(fileTreeNodesQueryOptions());
+
+onMounted(() => {
+  onFileTreeUpdate(async () => {
+    await getFileTreeNodes();
+  });
+});
 </script>
 
 <template>
-  <section class="bg-background-100 w-65 px-4 py-3 flex flex-col gap-2">
-    <header class="flex items-center justify-between">
+  <section class="bg-background-100 w-65 py-3 flex flex-col gap-2 h-full">
+    <header class="flex items-center justify-between px-4">
       <h1 class="uppercase text-primary-300 text-xs">
         {{ rootInfo?.basename }}
       </h1>
       <FileTreeActions />
     </header>
-    <main class="w-full border flex-1" />
+    <ScrollArea class="w-full overflow-x-hidden pl-4">
+      <FileTreeNodes :file-tree-nodes="fileTreeNodes" />
+    </ScrollArea>
   </section>
 </template>

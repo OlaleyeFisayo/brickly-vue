@@ -12,11 +12,14 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     mutations: {
       onError: (error: unknown) => {
-        const axiosError = error as AxiosError<{ message: string }>;
-        const message = axiosError?.response?.data
-          ? axiosError.response.data.message
-          : axiosError.message;
-        toast.error(message);
+        const axiosError = error as AxiosError;
+        const message = axiosError.code === "ERR_NETWORK" ? "Start the dev server to perform actions" : axiosError.message;
+        toast.error(
+          "Failed to perform action",
+          {
+            description: message,
+          },
+        );
       },
     },
   },

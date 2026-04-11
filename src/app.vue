@@ -12,9 +12,9 @@ import PanelMenu from "@/features/panel-menu/components/panel-menu.vue";
     rich-colors
     theme="dark"
   />
-  <main class="w-full h-dvh text-primary-300 flex flex-col">
+  <main class="w-full h-dvh flex flex-col text-primary-300">
     <Header />
-    <section class="flex flex-1">
+    <section class="flex flex-1 overflow-hidden">
       <PanelMenu />
       <FileTree />
     </section>
