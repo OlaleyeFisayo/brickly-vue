@@ -29,7 +29,7 @@ const {
     class="flex-1 overflow-hidden"
   >
     <ResizablePanel
-      :default-size="10"
+      :default-size="35"
       :max-size="35"
       class="bg-background-100 py-3 pl-4 pr-2"
       :min-size="10"
