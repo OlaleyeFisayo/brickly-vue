@@ -32,7 +32,7 @@ export default defineConfig({
     tailwindcss(),
     fileExplorer({
       hiddenFiles: [".husky", ".git", ".vscode"],
-      defaultIde: "vscode",
+      // defaultIde: "vscode",
     }),
   ],
 });

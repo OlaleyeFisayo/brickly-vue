@@ -19,6 +19,7 @@ import CreateFile from "./create-file.vue";
 import CreateFolder from "./create-folder.vue";
 import FileTreeNodeName from "./file-tree-node-name.vue";
 import FileTreeNodeTemplate from "./file-tree-node-template.vue";
+import NodeContextMenu from "./node-context-menu.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -87,12 +88,14 @@ async function handleNodeClick(
     v-for="node in dirNodes"
     :key="node.key"
   >
-    <FileTreeNodeTemplate
-      :node="node"
-      @click.stop="handleNodeClick(node, $event)"
-    >
-      <FileTreeNodeName :name="node.name" />
-    </FileTreeNodeTemplate>
+    <NodeContextMenu :node="node">
+      <FileTreeNodeTemplate
+        :node="node"
+        @click.stop="handleNodeClick(node, $event)"
+      >
+        <FileTreeNodeName :name="node.name" />
+      </FileTreeNodeTemplate>
+    </NodeContextMenu>
     <div
       v-if="node.expanded"
       class="ml-3"
@@ -108,11 +111,13 @@ async function handleNodeClick(
     v-for="node in fileNodes"
     :key="node.key"
   >
-    <FileTreeNodeTemplate
-      :node="node"
-      @click.stop="handleNodeClick(node, $event)"
-    >
-      <FileTreeNodeName :name="node.name" />
-    </FileTreeNodeTemplate>
+    <NodeContextMenu :node="node">
+      <FileTreeNodeTemplate
+        :node="node"
+        @click.stop="handleNodeClick(node, $event)"
+      >
+        <FileTreeNodeName :name="node.name" />
+      </FileTreeNodeTemplate>
+    </NodeContextMenu>
   </div>
 </template>

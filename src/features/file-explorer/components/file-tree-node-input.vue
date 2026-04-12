@@ -33,7 +33,7 @@ function handleEnter() {
   <input
     ref="inputRef"
     type="text"
-    class="focus:border-2 outline-none text-sm"
+    class="focus:border-2 outline-none text-sm w-full"
     @blur="fileExplorerStore.stopCreating()"
     @keydown.esc="inputRef?.blur()"
     @keydown.enter="handleEnter"

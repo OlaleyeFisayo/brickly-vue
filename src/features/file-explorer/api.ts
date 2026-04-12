@@ -2,9 +2,12 @@ import {
   collapseDirectory,
   createFile,
   createFolder,
+  deleteItem,
   expandDirectory,
   getFileTree,
   getRootInfo,
+  openInFileManager,
+  openInIde,
 } from "@brickly/file-explorer";
 import {
   queryOptions,
@@ -78,5 +81,23 @@ export function useCreateFolder() {
         payload.name,
         payload.dirPath,
       ),
+  });
+}
+
+export function useDeleteItem() {
+  return useMutation({
+    mutationFn: (path: string) => deleteItem(path),
+  });
+}
+
+export function useOpenInFileManager() {
+  return useMutation({
+    mutationFn: (path: string) => openInFileManager(path),
+  });
+}
+
+export function useOpenInIde() {
+  return useMutation({
+    mutationFn: (path: string) => openInIde(path),
   });
 }
