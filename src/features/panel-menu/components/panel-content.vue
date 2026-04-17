@@ -16,7 +16,7 @@ import {
 
 const FileExplorerView = defineAsyncComponent(() => import("@/features/file-explorer/view/file-explorer-view.vue"));
 const SearchPanel = defineAsyncComponent(() => import("@/features/search/view/search-panel.vue"));
-const ComponentsPanel = defineAsyncComponent(() => import("@/features/app-components/view/components-panel.vue"));
+// const ComponentsPanel = defineAsyncComponent(() => import("@/features/app-components/view/components-panel.vue"));
 const CanvasPanel = defineAsyncComponent(() => import("@/features/canvas/view/canvas-panel.vue"));
 
 const {
@@ -37,7 +37,7 @@ const {
     >
       <FileExplorerView v-if="activePanel === 'file-explorer'" />
       <SearchPanel v-else-if="activePanel === 'search-component'" />
-      <ComponentsPanel v-else-if="activePanel === 'components'" />
+      <!-- <ComponentsPanel v-else-if="activePanel === 'components'" /> -->
     </ResizablePanel>
     <ResizableHandle />
     <ResizablePanel

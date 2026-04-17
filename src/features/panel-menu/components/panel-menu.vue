@@ -3,7 +3,7 @@ import type {
   PanelId,
 } from "../store";
 import {
-  Component,
+  // Component,
   FolderOpen,
   Search,
 } from "lucide-vue-next";
@@ -34,11 +34,11 @@ const EDITOR_PANELS = [
     title: "Search",
     Icon: Search,
   },
-  {
-    id: "components",
-    title: "Components",
-    Icon: Component,
-  },
+  // {
+  //   id: "components",
+  //   title: "Components",
+  //   Icon: Component,
+  // },
 ] as const satisfies ReadonlyArray<{
   id: PanelId;
   title: string;
