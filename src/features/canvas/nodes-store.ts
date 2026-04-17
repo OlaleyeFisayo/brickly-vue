@@ -28,6 +28,10 @@ export const useCanvasNodesStore = defineStore(
       filePath: string,
       nodeKey: string,
     ) {
+      if (nodes.value.some(n => n.filePath === filePath)) {
+        return;
+      }
+
       const label = filePath.split(PATH_SEP_RE).pop() ?? filePath;
 
       let x = 40;
