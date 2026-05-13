@@ -9,6 +9,9 @@ import vue from "@vitejs/plugin-vue";
 import {
   defineConfig,
 } from "vite";
+import {
+  bricklyPreviewSetup,
+} from "./src/shared/plugin/brickly-preview-setup";
 
 export default defineConfig({
   resolve: {
@@ -33,6 +36,7 @@ export default defineConfig({
     fileExplorer({
       hiddenFiles: [".husky", ".git", ".vscode"],
     }),
+    bricklyPreviewSetup(),
   ],
   build: {
     rollupOptions: {
