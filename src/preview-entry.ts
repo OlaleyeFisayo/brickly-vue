@@ -7,7 +7,6 @@ import {
 import {
   useSearchParams,
 } from "./shared/hooks/use-search-params";
-import "./shared/main.css";
 
 const {
   vueFile,
